@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">amazon_wishlist</string>
+    <string name="wishlostText">ウィッシュリストのURLの記入</string>
+    <string name="URL">URL</string>
+    <string name="submit">登録</string>
 </resources>
