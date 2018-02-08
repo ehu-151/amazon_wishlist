@@ -1,19 +1,16 @@
 package com.example.ehu.amazon_wishlist;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.FragmentManager;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -27,14 +24,14 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
         //フローティングボタンのタップ実装
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
         //ナビゲーションドロワーの実装
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -44,6 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        displayView(R.id.nav_home);
     }
 
     @Override
@@ -82,18 +80,66 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
-        int id = item.getItemId();
+//        int id = item.getItemId();
+        displayView(item.getItemId());
+//        if (id == R.id.nav_home) {
+//            Log.d(TAG, "home Selected!");
+////            Intent intent = new Intent(this,HomeActivity.class);
+////            startActivity(intent);
+//            Fragment fragment= new HomeFragment();
+//            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//            ft.replace(R.id.include, fragment);
+//            ft.commit();
+//
+//        } else if (id == R.id.nav_bookmark_border) {
+//            Log.d(TAG, "bookmark Selected!");
+//            Intent intent = new Intent(this, WishlistRegistration.class);
+//            startActivity(intent);
+//        }
+//
+//        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+//        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
+    public void displayView(int viewId) {
 
-        if (id == R.id.nav_home) {
-            Log.d(TAG, "home Selected!");
+        Fragment fragment = null;
+        String title = getString(R.string.app_name);
+        Class fragmentClass = null;
+        switch (viewId) {
+            case R.id.nav_home:
+//                fragment = new HomeFragment();
+                fragmentClass=HomeFragment.class;
+                title  = "ホーム";
+
+                break;
+            case R.id.nav_bookmark_border:
+//                fragment = new WishlistRegistration();
+                fragmentClass=WishlistRegistration.class;
+                title = "ウィッシュリストの登録";
+                break;
+
+        }
+        try {
+            fragment = (Fragment) fragmentClass.newInstance();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
-        } else if (id == R.id.nav_bookmark_border) {
-            Log.d(TAG, "bookmark Selected!");
+        if (fragment != null) {
+            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+            ft.replace(R.id.flContent, fragment);
+            ft.commit();
+        }
+
+        // set the toolbar title
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle(title);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
-        return true;
+
     }
 }
