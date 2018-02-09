@@ -46,15 +46,17 @@ public class HomeFragment extends Fragment {
                 switch (position) {
                     case 0:
                         intent.putExtra("url", "https://amazon.co.jp/gp/item-dispatch/ref=cm_wl_addtocart_o_pC_nS?registryID.1=2N0DPGRXMBY97&registryItemID.1=I7T2WTPBKRJ4U&offeringID.1=Kj5hSmGNYr3g5obz9akHpKrxM9qI1x2UPykxVlEtB0kl0a%252BxCYuzpfhGPx0RB5qnrgnFPPb3HakEGnTD2LZI%252B3897mXQ4YK07gpJrbHyMSs%253D&session-id=000-0000000-0000000isGift=1&submit.addToCart=1&quantity.1=1");
-                        startActivity(intent);
                         break;
                     case 1:
+                        intent.putExtra("url","https://amazon.co.jp/gp/item-dispatch/ref=cm_wl_addtocart_o_pC_nS?registryID.1=2N0DPGRXMBY97&registryItemID.1=IBU0RUR024IHI&offeringID.1=3kVZ%252Bp%252BHAH99k1BDGXoYlFOoQcPsDfVqapLFmz5sLLzkGVmu6IGur%252FXS2Wtm2sPb978D3l%252FWjO3sAP0FdxEMJxjppNKsGUzjbkk3PQUV7HY%253D&session-id=000-0000000-0000000isGift=1&submit.addToCart=1&quantity.1=1");
                         break;
                     case 2:
+                        intent.putExtra("url","https://amazon.co.jp/gp/item-dispatch/ref=cm_wl_addtocart_o_pC_nS?registryID.1=2N0DPGRXMBY97&registryItemID.1=I2BZ1FBDJO73ZZ&offeringID.1=hUHvVFgN5AovPUhLMega9AfPic9k7XjVKooLgTbZPIEfnDxv7bs6wNZ%252B4A%252BI086E%252Bn6WNVM%252FZ6b5psPPEVaFk55kxtycv8IuCzrNzFCPBNY%253D&session-id=000-0000000-0000000isGift=1&submit.addToCart=1&quantity.1=1");
                         break;
                     default:
                         Toast.makeText(getContext(), "無効です", Toast.LENGTH_SHORT).show();
                 }
+                startActivity(intent);
             }
         });
 
@@ -75,6 +77,12 @@ public class HomeFragment extends Fragment {
     public List<Map<String, String>> getListData() {
         List<Map<String, String>> listData = new ArrayList<Map<String, String>>();
 
+        listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.1(Blu-ray)"}, {"name", "￥5,999"}}));
+        listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.2(Blu-ray)"}, {"name", "￥5,458"}}));
+        listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.3（Blu-ray）"}, {"name", "￥5,458"}}));
+        listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.1(Blu-ray)"}, {"name", "￥5,999"}}));
+        listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.2(Blu-ray)"}, {"name", "￥5,458"}}));
+        listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.3（Blu-ray）"}, {"name", "￥5,458"}}));
         listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.1(Blu-ray)"}, {"name", "￥5,999"}}));
         listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.2(Blu-ray)"}, {"name", "￥5,458"}}));
         listData.add(getMapData(new String[][]{{"no", "ポプテピピック vol.3（Blu-ray）"}, {"name", "￥5,458"}}));
