@@ -42,8 +42,11 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("link", "yobidasi" + position);
+                Intent intent = new Intent(getContext(),WebViewActivity.class);
                 switch (position) {
                     case 0:
+                        intent.putExtra("url", "https://amazon.co.jp/gp/item-dispatch/ref=cm_wl_addtocart_o_pC_nS?registryID.1=2N0DPGRXMBY97&registryItemID.1=I7T2WTPBKRJ4U&offeringID.1=Kj5hSmGNYr3g5obz9akHpKrxM9qI1x2UPykxVlEtB0kl0a%252BxCYuzpfhGPx0RB5qnrgnFPPb3HakEGnTD2LZI%252B3897mXQ4YK07gpJrbHyMSs%253D&session-id=000-0000000-0000000isGift=1&submit.addToCart=1&quantity.1=1");
+                        startActivity(intent);
                         break;
                     case 1:
                         break;
