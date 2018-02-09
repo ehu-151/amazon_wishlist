@@ -9,6 +9,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -108,15 +109,14 @@ public class MainActivity extends AppCompatActivity
         Class fragmentClass = null;
         switch (viewId) {
             case R.id.nav_home:
-//                fragment = new HomeFragment();
                 fragmentClass=HomeFragment.class;
                 title  = "ホーム";
-
+                Log.d(TAG,"change HomeFragment");
                 break;
             case R.id.nav_bookmark_border:
-//                fragment = new WishlistRegistration();
                 fragmentClass=WishlistRegistration.class;
                 title = "ウィッシュリストの登録";
+                Log.d(TAG,"change WishlistRegistration");
                 break;
 
         }
